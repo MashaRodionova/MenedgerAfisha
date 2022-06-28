@@ -20,7 +20,7 @@ public class ManagerAfishaTests {
 
 
     //Тестируем добавление новых фильмов в афишу
-    @Test
+    /*@Test
     public void test() {
         ManagerAfisha afisha = new ManagerAfisha();
         afisha.add(item7);
@@ -121,5 +121,29 @@ public class ManagerAfishaTests {
         AfishaItems[] expected = {item13, item12, item11, item10, item9, item8, item7};
         AfishaItems[] actual = afisha.findLast();
         Assertions.assertArrayEquals(expected, actual);
+    }*/
+@Test
+    public void test7() {
+        AfishaRepository afisha = new AfishaRepository();
+        AfishaItems actual = afisha.findById("Nomadland");
+        AfishaItems expected = null;
+        Assertions.assertEquals(expected, actual);
+
+
+    }
+
+    @Test
+    public void test8() {
+        AfishaRepository afisha = new AfishaRepository();
+        afisha.save(item8);
+        afisha.save(item9);
+        afisha.save(item10);
+        afisha.save(item11);
+        afisha.save(item12);
+        AfishaItems[] expected = {null, null, null, null, null};
+        AfishaItems[] actual = afisha.removeAll();
+        Assertions.assertArrayEquals(expected, actual);
+
+
     }
 }
