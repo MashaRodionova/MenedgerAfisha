@@ -1,14 +1,8 @@
 public class ManagerAfisha {
     private AfishaRepository repository;
-    private int countOfItems;
 
-    public ManagerAfisha() {
-        this.countOfItems = 10;
-
-    }
-
-    public ManagerAfisha(int amount) {
-        this.countOfItems = amount;
+    public ManagerAfisha(AfishaRepository repository) {
+        this.repository = repository;
     }
 
     public void add(AfishaItems item) {
@@ -16,17 +10,17 @@ public class ManagerAfisha {
     }
 
     public AfishaItems[] managerGetItems() {
-         return repository.getItems();
+        return repository.getItems();
     }
 
     public AfishaItems[] managerFindAll() {
-       return  repository.findAll();
+        return repository.findAll();
     }
 
-    public AfishaItems[] findLast() {
+    public AfishaItems[] findLast(int countOfItems) {
         AfishaItems[] tmp = repository.getItems();
         int lengthNewArray;
-        lengthNewArray = Math.min(tmp.length, this.countOfItems);
+        lengthNewArray = Math.min(tmp.length, countOfItems);
         AfishaItems[] countOfLast = new AfishaItems[lengthNewArray];
         for (int i = 0; i < countOfLast.length; i++) {
             countOfLast[i] = tmp[tmp.length - 1 - i];
